@@ -12,7 +12,7 @@ function View() {
     const {userId} =postDetails
     firebase.firestore().collection('users').where('id','===', userId).get().then((res)=>{
       res.forEach(doc=>{
-setUserDetails(doc.data())
+       setUserDetails(doc.data())
       })
     })
   })

@@ -27,6 +27,7 @@ const handleSubmit =()=>{
           name,
           category,
           price,
+          url,
           userId:user.uid,
           createdAt:date.toDateString()
 

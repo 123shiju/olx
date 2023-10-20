@@ -35,6 +35,7 @@ function Posts() {
             return <div
             className="card" onClick={()=>{
               setPostDetails(product)
+              history.push('/view')
             }}
           >
             <div className="favorite">
