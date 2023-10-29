@@ -22,7 +22,7 @@ function Posts() {
       })
     setProducts(allPost)
     })
-  },[])
+  },[firebase])
   return (
     <div className="postParentDiv">
       <div className="moreView">
@@ -49,6 +49,11 @@ function Posts() {
               <span className="kilometer">{product.category}</span>
               <p className="name">{product.name}</p>
             </div>
+
+            <div className="CustomerName">
+              <span>{`Published By: ${product.Customername}`}</span>
+            </div>
+
             <div className="date">
               <span>{product.createdAt}</span>
             </div>

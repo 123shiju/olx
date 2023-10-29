@@ -29,7 +29,12 @@ function View() {
           <p>&#x20B9;{postDetails.price} </p>
           <span>{postDetails.name}</span>
           <p>{postDetails.category}</p>
+
+          <p>{`Published By: ${postDetails.Customername}`}</p>
+          <p>{`Mobile No: ${postDetails.phoneNo}`}</p>
+          <p>{`Address: ${postDetails.Address}`}</p>
           <span>{postDetails.createdAt}</span>
+          
         </div>
         { userDetails  && < div className="contactDetails">
           <p>Seller details</p>

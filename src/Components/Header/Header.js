@@ -39,7 +39,11 @@ const history=useHistory()
           <Arrow></Arrow>
         </div>
         <div className="loginPage">
-          <span>{user ? 'Welcome'  : 'Login'}</span>
+          <span onClick={()=>{
+            if(!user){
+              history.push('/login')
+            }
+          }}>{user ? `Welcome ${user.displayName} ` : 'Login'}</span>
           <hr />
          
         </div>
@@ -52,7 +56,11 @@ const history=useHistory()
           <SellButton></SellButton>
           <div className="sellMenuContent">
             <SellButtonPlus></SellButtonPlus>
-            <span>SELL</span>
+            <span onClick={()=>{
+              if(user){
+                history.push('/create')
+              }
+            }}>SELL</span>
           </div>
         </div>
       </div>

@@ -16,6 +16,9 @@ const Create = () => {
      const[category,setCategory]=useState('')
      const[price,setPrice]=useState('')
      const[image,setImage]=useState('')
+     const[Customername,setCustomername]=useState('')
+     const [phoneNo,setPhoneNo] =useState('')
+     const [Address,setAddress]=useState('')
      const date=new Date()
 
 const handleSubmit =()=>{
@@ -29,7 +32,10 @@ const handleSubmit =()=>{
           price,
           url,
           userId:user.uid,
-          createdAt:date.toDateString()
+          createdAt:date.toDateString(),
+          Customername,
+          phoneNo,
+          Address
 
         })
         history.push('/')
@@ -43,7 +49,7 @@ const handleSubmit =()=>{
       <card>
         <div className="centerDiv">
         
-            <label htmlFor="fname">Name</label>
+            <label htmlFor="fname">Product Name</label>
             <br />
             <input
               className="input"
@@ -72,6 +78,46 @@ const handleSubmit =()=>{
             <input className="input" type="number" value={price}
               onChange={(e)=>setPrice(e.target.value)} id="fname" name="Price" />
             <br />
+
+            <label htmlFor="Cname">Customer Name</label>
+            <br />
+            <input
+              className="input"
+              type="text"
+              value={Customername}
+              onChange={(e)=>setCustomername(e.target.value)}
+              id="Cname"
+              name="Customername"
+              defaultValue="john"
+            />
+            <br />
+
+            <label htmlFor="Cname">Phone Number</label>
+            <br />
+            <input
+              className="input"
+              type="number"
+              value={phoneNo}
+              onChange={(e)=>setPhoneNo(e.target.value)}
+              id="phoneNo"
+              name="phoneNo"
+              defaultValue=""
+            />
+            <br />
+
+            <label htmlFor="Cname">Address</label>
+            <br />
+            <input
+              className="input"
+              type="text"
+              value={Address}
+              onChange={(e)=>setAddress(e.target.value)}
+              id="Address"
+              name="Address"
+              defaultValue=""
+            />
+            <br />
+
         
           <br />
           <img alt="Posts"    width="200px" height="200px" src={image ? URL.createObjectURL(image):'' }></img>

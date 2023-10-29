@@ -14,23 +14,30 @@ export default function Signup() {
   const [password, setPassword] = useState('')
   const {firebase}= useContext(FireBaseContext) 
 
-  const handlesubmit =(e) =>{
-    e.preventDefault()
+  const handlesubmit = (e) => {
+    e.preventDefault();
     
- firebase.auth().createUserWithEmailAndPassword(email,password).then((result)=>{
-      result.user.updateProfile({displayName:username}).then(()=>{
-        firebase.firestore().collection('users').add({
-          id:result.user.uid,
-          username:username,
-          phone:phone
-        }).then(()=>{
-          history.push("/login")
-        })
-
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then((result) => {
+        result.user.updateProfile({ displayName: username }).then(() => {
+          firebase.firestore().collection('users').add({
+            id: result.user.uid,
+            username: username,
+            phone: phone,
+          }).then(() => {
+            history.push("/login");
+          }).catch((error) => {
+            console.error('Error adding user data to Firestore:', error);
+          });
+        });
       })
-    })
-  
+      .catch((error) => {
+        console.error('Error signing up:', error);
+      });
   }
+  
 
   return (
   <div>
@@ -88,7 +95,7 @@ export default function Signup() {
           <br />
           <button>Signup</button>
         </form>
-    <a>Login</a>
+        <a href="/login">Login</a>
       </div>
     </div>
   );
